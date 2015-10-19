@@ -32,10 +32,12 @@ module.exports = function (bot) {
 
       for (var i = 0; i < lunchOptions.length; i++) {
         var cs = lunchOptions[i]
-        message += (i + 1) + ': ' + cs.name + ' (' + url + cs.id + ')\n'
-        message += cs.location.address + '\n\n'
+        message = (i + 1) + ': ' + cs.name + ' (' + cs.location.address + ')\n'
+        message += url + cs.id
+        res.send(message)
       }
 
+      message = 'Please cast your vote by adding a thumb-up or thumb-down reaction to one of the choices above.'
       return res.send(message)
     })
   })
