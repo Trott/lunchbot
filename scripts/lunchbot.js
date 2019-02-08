@@ -1,6 +1,6 @@
 if (process.env.NODE_ENV !== 'production') { require('dotenv').load() }
 
-const _ = require('lodash');
+const sampleSize = require('lodash.samplesize');
 const foursquare = require('node-foursquare-venues')(process.env.FOURSQUARE_CLIENT_ID, process.env.FOURSQUARE_CLIENT_SECRET);
 
 
@@ -26,7 +26,7 @@ module.exports = function (bot) {
     return foursquare.venues.search(searchObj, function (error, payload) {
       if (error) return res.send(error)
 
-      const lunchOptions = _.sample(payload.response.venues, 5)
+      const lunchOptions = sampleSize(payload.response.venues, 5)
       const url = 'https://www.foursquare.com/v/'
       var message = '';
 
