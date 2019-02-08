@@ -5,7 +5,7 @@
   "author": "Rich Trott <rtrott@gmail.com>",
   "description": "A robot to tell us where we should eat lunch",
   "dependencies": {
-    "hubot": "^2.16.0",
+    "hubot": "^3.2.0",
     "hubot-diagnostics": "0.0.1",
     "hubot-google-images": "^0.2.2",
     "hubot-google-translate": "^0.2.0",
