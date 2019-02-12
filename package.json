@@ -5,7 +5,7 @@
   "author": "Rich Trott <rtrott@gmail.com>",
   "description": "A robot to tell us where we should eat lunch",
   "scripts": {
-    "start": "hubot --name 'lunchbot' -a slack"
+    "start": "env $(cat .env | xargs) hubot --name 'lunchbot' -a slack"
   },
   "dependencies": {
     "hubot": "^3.2.0",
@@ -13,7 +13,6 @@
     "hubot-google-images": "^0.2.2",
     "hubot-google-translate": "^0.2.0",
     "hubot-help": "^0.1.1",
-    "hubot-heroku-keepalive": "^1.0.0",
     "hubot-maps": "0.0.2",
     "hubot-pugme": "^0.1.0",
     "hubot-redis-brain": "0.0.3",
