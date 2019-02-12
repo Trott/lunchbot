@@ -5,7 +5,7 @@
   "author": "Rich Trott <rtrott@gmail.com>",
   "description": "A robot to tell us where we should eat lunch",
   "scripts": {
-    "start": "hubot --name 'lunchbot'"
+    "start": "hubot --name 'lunchbot' -a slack"
   },
   "dependencies": {
     "hubot": "^3.2.0",
