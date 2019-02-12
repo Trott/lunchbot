@@ -1,3 +1,6 @@
+// Description:
+//   Get suggestions of places to eat lunch.
+
 if (process.env.NODE_ENV !== 'production') { require('dotenv').load() }
 
 const sampleSize = require('lodash.samplesize');
@@ -15,7 +18,7 @@ module.exports = function (bot) {
         '4bf58dd8d48988d143941735', // Breakfast (Crepevine)
         '4bf58dd8d48988d16c941735', // Burger (Burgermeister)
         '4bf58dd8d48988d1c0941735', // Mediterranean (Taboun)
-        '4bf58dd8d48988d1ca941735', // Pizza (KP, Front Room) 
+        '4bf58dd8d48988d1ca941735', // Pizza (KP, Front Room)
         '4bf58dd8d48988d10f941735', // Indian
         '4bf58dd8d48988d1c1941735', // Mexican
       ].join(','),
