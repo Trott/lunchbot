@@ -121,20 +121,6 @@ repo.
 
 [hubot-scripts]: https://github.com/github/hubot-scripts
 
-##  Persistence
-
-If you are going to use the `hubot-redis-brain` package (strongly suggested),
-you will need to add the Redis to Go addon on Heroku which requires a verified
-account or you can create an account at [Redis to Go][redistogo] and manually
-set the `REDISTOGO_URL` variable.
-
-    % heroku config:add REDISTOGO_URL="..."
-
-If you don't need any persistence feel free to remove the `hubot-redis-brain`
-from `external-scripts.json` and you don't need to worry about redis at all.
-
-[redistogo]: https://redistogo.com/
-
 ## Adapters
 
 Adapters are the interface to the service you want your hubot to run on, such
