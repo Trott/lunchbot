@@ -3,8 +3,8 @@
 
 if (process.env.NODE_ENV !== 'production') { require('dotenv').load() }
 
-const sampleSize = require('lodash.samplesize');
-const foursquare = require('node-foursquare-venues')(process.env.FOURSQUARE_CLIENT_ID, process.env.FOURSQUARE_CLIENT_SECRET);
+const sampleSize = require('lodash.samplesize')
+const foursquare = require('node-foursquare-venues')(process.env.FOURSQUARE_CLIENT_ID, process.env.FOURSQUARE_CLIENT_SECRET)
 
 const searchObj = {
   near: '530 Parnassus Avenue San Francisco CA',
@@ -17,7 +17,7 @@ const searchObj = {
     '4bf58dd8d48988d1c0941735', // Mediterranean (Taboun)
     '4bf58dd8d48988d1ca941735', // Pizza (KP, Front Room)
     '4bf58dd8d48988d10f941735', // Indian
-    '4bf58dd8d48988d1c1941735', // Mexican
+    '4bf58dd8d48988d1c1941735' // Mexican
   ].join(','),
   radius: 625,
   limit: 50
@@ -30,7 +30,7 @@ module.exports = function (bot) {
 
       const lunchOptions = sampleSize(payload.response.venues, 5)
       const url = 'https://www.foursquare.com/v/'
-      var message = '';
+      var message = ''
 
       for (var i = 0; i < lunchOptions.length; i++) {
         var cs = lunchOptions[i]
@@ -50,7 +50,7 @@ module.exports = function (bot) {
 
       const lunchOptions = sampleSize(payload.response.venues, 1)
       const url = 'https://www.foursquare.com/v/'
-      var message = '';
+      var message = ''
 
       for (var i = 0; i < lunchOptions.length; i++) {
         var cs = lunchOptions[i]
@@ -69,7 +69,7 @@ module.exports = function (bot) {
       near: '530 Parnassus Avenue San Francisco CA',
       categoryId: [
         '4bf58dd8d48988d1e0931735', // Coffee Shop
-        '5665c7b9498e7d8a4f2c0f06', // Corporate Coffee Shop
+        '5665c7b9498e7d8a4f2c0f06' // Corporate Coffee Shop
       ].join(','),
       radius: 300,
       limit: 50
@@ -79,7 +79,7 @@ module.exports = function (bot) {
 
       const lunchOptions = sampleSize(payload.response.venues, 1)
       const url = 'https://www.foursquare.com/v/'
-      var message = '';
+      var message = ''
 
       for (var i = 0; i < lunchOptions.length; i++) {
         var cs = lunchOptions[i]
