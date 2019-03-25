@@ -63,4 +63,33 @@ module.exports = function (bot) {
       return res.send(message)
     })
   })
+
+  bot.respond(/coffee/i, function (res) {
+    const coffeeSearchObj = {
+      near: '530 Parnassus Avenue San Francisco CA',
+      categoryId: [
+        '4bf58dd8d48988d1e0931735', // Coffee Shop
+        '5665c7b9498e7d8a4f2c0f06', // Corporate Coffee Shop
+      ].join(','),
+      radius: 300,
+      limit: 50
+    }
+    return foursquare.venues.search(coffeeSearchObj, function (error, payload) {
+      if (error) return res.send(error)
+
+      const lunchOptions = sampleSize(payload.response.venues, 1)
+      const url = 'https://www.foursquare.com/v/'
+      var message = '';
+
+      for (var i = 0; i < lunchOptions.length; i++) {
+        var cs = lunchOptions[i]
+        message = (i + 1) + ': ' + cs.name + ' (' + cs.location.address + ')\n'
+        message += url + cs.id
+        res.send(message)
+      }
+
+      message = 'Get your coffee on!'
+      return res.send(message)
+    })
+  })
 }
