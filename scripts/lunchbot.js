@@ -44,7 +44,7 @@ module.exports = function (bot) {
     })
   })
 
-  bot.respond(/decision/i, function (res) {
+  bot.respond(/decision|decide/i, function (res) {
     return foursquare.venues.search(searchObj, function (error, payload) {
       if (error) return res.send(error)
 
