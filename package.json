@@ -3,15 +3,13 @@
   "version": "0.0.0",
   "private": true,
   "author": "Rich Trott <rtrott@gmail.com>",
-  "description": "A robot to tell us where we should eat lunch",
+  "description": "Slack slash-command to make lunch and coffee recommendations",
   "scripts": {
-    "start": "env $(cat .env | xargs) hubot --name 'lunchbot' -a slack",
-    "test": "standard"
+    "test": "standard && node test.js",
+    "lint": "standard --fix"
   },
   "dependencies": {
-    "hubot": "^3.3.1",
-    "hubot-slack": "^4.7.1",
-    "lodash.samplesize": "^4.2.0",
+    "micro": "^9.3.4",
     "node-foursquare-venues": "^1.1.0"
   },
   "devDependencies": {
