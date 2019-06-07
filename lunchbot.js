@@ -47,19 +47,15 @@ module.exports = async (searchType) => {
   }
 
   let payload
-  try {
-    payload = await search(searchObj)
-    const recs = payload.response.venues
-    const rec = recs[Math.floor(Math.random() * recs.length)]
-    const url = 'https://www.foursquare.com/v/'
+  payload = await search(searchObj)
+  const recs = payload.response.venues
+  const rec = recs[Math.floor(Math.random() * recs.length)]
+  const url = 'https://www.foursquare.com/v/'
 
-    message = rec.name + ' (' + rec.location.address + ')\n'
-    message += url + rec.id
+  message = rec.name + ' (' + rec.location.address + ')\n'
+  message += url + rec.id
 
-    message += `\n\n${messageTag}`
-  } catch (e) {
-    message = `Whoops! ${e.message}`
-  }
+  message += `\n\n${messageTag}`
 
   return message
 }
