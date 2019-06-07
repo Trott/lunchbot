@@ -1,6 +1,6 @@
 {
   "name": "lunchbot",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "author": "Rich Trott <rtrott@gmail.com>",
   "description": "Slack slash-command to make lunch and coffee recommendations",
