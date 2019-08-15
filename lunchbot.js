@@ -52,6 +52,10 @@ module.exports = async (searchType) => {
   const rec = recs[Math.floor(Math.random() * recs.length)]
   const url = 'https://www.foursquare.com/v/'
 
+  if (!rec) {
+    return 'Sorry! It looks like something went wrong. Please try again!'
+  }
+
   message = rec.name + ' (' + rec.location.address + ')\n'
   message += url + rec.id
 
