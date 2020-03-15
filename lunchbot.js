@@ -46,8 +46,7 @@ module.exports = async (searchType) => {
     messageTag = 'Enjoy your lunch!'
   }
 
-  let payload
-  payload = await search(searchObj)
+  const payload = await search(searchObj)
   const recs = payload.response.venues
   const rec = recs[Math.floor(Math.random() * recs.length)]
   const url = 'https://www.foursquare.com/v/'
