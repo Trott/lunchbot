@@ -13,7 +13,7 @@
     "node-foursquare-venues": "^1.1.0"
   },
   "devDependencies": {
-    "dotenv": "^1.2.0",
+    "dotenv": "^16.0.0",
     "standard": "^16.0.4"
   }
 }

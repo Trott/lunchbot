@@ -1,6 +1,6 @@
 'use strict'
 
-if (process.env.NODE_ENV !== 'production') { require('dotenv').load() }
+if (process.env.NODE_ENV !== 'production') { require('dotenv').config() }
 const foursquare = require('node-foursquare-venues')(process.env.FOURSQUARE_CLIENT_ID, process.env.FOURSQUARE_CLIENT_SECRET)
 
 const search = require('util').promisify(foursquare.venues.search)
