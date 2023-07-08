@@ -9,11 +9,11 @@
     "lint": "standard --fix"
   },
   "dependencies": {
-    "micro": "^9.3.4",
+    "micro": "^10.0.1",
     "node-foursquare-venues": "^1.1.0"
   },
   "devDependencies": {
-    "dotenv": "^16.0.0",
-    "standard": "^16.0.4"
+    "dotenv": "^16.3.1",
+    "standard": "^17.1.0"
   }
 }
