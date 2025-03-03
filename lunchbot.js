@@ -19,7 +19,8 @@ const lunchSearchObj = {
     '4bf58dd8d48988d1c1941735' // Mexican
   ].join(','),
   radius: 625,
-  limit: 50
+  limit: 50,
+  v: '20231010'
 }
 
 const coffeeSearchObj = {
@@ -29,7 +30,8 @@ const coffeeSearchObj = {
     '5665c7b9498e7d8a4f2c0f06' // Corporate Coffee Shop
   ].join(','),
   radius: 300,
-  limit: 50
+  limit: 50,
+  v: '20231010'
 }
 
 module.exports = async (searchType) => {
@@ -46,19 +48,24 @@ module.exports = async (searchType) => {
     messageTag = 'Enjoy your lunch!'
   }
 
-  const payload = await search(searchObj)
-  const recs = payload.response.venues
-  const rec = recs[Math.floor(Math.random() * recs.length)]
-  const url = 'https://www.foursquare.com/v/'
+  try {
+    const payload = await search(searchObj)
+    const recs = payload.response.venues
+    const rec = recs[Math.floor(Math.random() * recs.length)]
+    const url = 'https://www.foursquare.com/v/'
 
-  if (!rec) {
+    if (!rec) {
+      return 'Sorry! It looks like something went wrong. Please try again!'
+    }
+
+    message = rec.name + ' (' + rec.location.address + ')\n'
+    message += url + rec.id
+
+    message += `\n\n${messageTag}`
+  } catch (error) {
+    console.error(error)
     return 'Sorry! It looks like something went wrong. Please try again!'
   }
-
-  message = rec.name + ' (' + rec.location.address + ')\n'
-  message += url + rec.id
-
-  message += `\n\n${messageTag}`
 
   return message
 }
