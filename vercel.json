@@ -1,7 +1,7 @@
 {
     "name": "lunchbot",
     "functions": {
-        "index.js": {
+        "pages/api/index.js": {
             "runtime": "@vercel/node@5.1.12"
         }
     }
