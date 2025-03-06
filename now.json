@@ -2,7 +2,7 @@
     "name": "lunchbot",
     "functions": {
         "index.js": {
-            "runtime": "@vercel/node@5",
+            "runtime": "@vercel/node@5"
         }
     }
-  }
+}
