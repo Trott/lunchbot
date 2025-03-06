@@ -2,7 +2,7 @@
 
 const { text } = require('micro')
 const { parse } = require('querystring')
-const lunchbot = require('../../lunchbot')
+const lunchbot = require('../lunchbot')
 
 module.exports = async (req, res) => {
   const type = parse(await text(req)).text
