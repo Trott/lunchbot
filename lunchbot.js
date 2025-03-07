@@ -45,7 +45,7 @@ module.exports = async (searchType) => {
   }
 
   try {
-    fsqDevelopers.auth(process.env.FOURSQUARE_API_TOKEN)
+    fsqDevelopers.auth(process.env.FOURSQUARE_API_KEY)
     const payload = await fsqDevelopers.placeSearch(searchObj)
     const recs = payload.data.results
     const rec = recs[Math.floor(Math.random() * recs.length)]
