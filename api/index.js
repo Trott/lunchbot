@@ -3,7 +3,7 @@
 const lunchbot = require('../lunchbot')
 
 module.exports = async (req, res) => {
-  const type = req.body
+  const type = req.body.text
 
   let message, responseType
   try {
