@@ -9,8 +9,7 @@
     "lint": "standard --fix"
   },
   "dependencies": {
-    "@api/fsq-developers": "file:.api/apis/fsq-developers",
-    "micro": "^10.0.1"
+    "@api/fsq-developers": "file:.api/apis/fsq-developers"
   },
   "devDependencies": {
     "dotenv": "^16.3.1",
