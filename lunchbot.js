@@ -1,7 +1,6 @@
 'use strict'
 
 if (process.env.NODE_ENV !== 'production') { require('dotenv').config() }
-const fsqDevelopers = require('@api/fsq-developers')
 
 const lunchSearchObj = {
   ll: '37.7634643,-122.4591061',
@@ -45,19 +44,31 @@ module.exports = async (searchType) => {
   }
 
   try {
-    fsqDevelopers.auth(process.env.FOURSQUARE_API_KEY)
-    const payload = await fsqDevelopers.placeSearch(searchObj)
-    const recs = payload.data.results
+    const params = new URLSearchParams({
+      ll: searchObj.ll,
+      categories: searchObj.categories,
+      limit: searchObj.limit,
+      radius: searchObj.radius
+    })
+    const url = `https://api.foursquare.com/v3/places/search?${params.toString()}`
+    const response = await fetch(url, {
+      headers: {
+        Authorization: process.env.FOURSQUARE_API_KEY,
+        Accept: 'application/json'
+      }
+    })
+    if (!response.ok) throw new Error('Foursquare API error')
+    const payload = await response.json()
+    const recs = payload.results
     const rec = recs[Math.floor(Math.random() * recs.length)]
-    const url = 'https://www.foursquare.com/v/'
+    const fsqUrl = 'https://www.foursquare.com/v/'
 
     if (!rec) {
       return 'Sorry! It looks like something went wrong. Please try again!'
     }
 
-    message = rec.name + ' (' + rec.location.address + ')\n'
-    message += url + rec.fsq_id
-
+    message = rec.name + ' (' + (rec.location.address || 'No address') + ')\n'
+    message += fsqUrl + rec.fsq_id
     message += `\n\n${messageTag}`
   } catch (error) {
     console.error(error)
