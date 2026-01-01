@@ -1,6 +1,6 @@
 'use strict'
 
-if (process.env.NODE_ENV !== 'production') { require('dotenv').config() }
+if (process.env.NODE_ENV !== 'production') { require('dotenv').config({ quiet: true }) }
 
 const lunchSearchObj = {
   ll: '37.7634643,-122.4591061',
