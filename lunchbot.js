@@ -4,27 +4,14 @@ if (process.env.NODE_ENV !== 'production') { require('dotenv').config({ quiet: t
 
 const lunchSearchObj = {
   ll: '37.7634643,-122.4591061',
-  categories: [
-    '4bf58dd8d48988d142941735', // Asian (Nan King, Soi Gow, New Sandy's, etc.)
-    '4bf58dd8d48988d1bd941735', // Salad (Pluto's)
-    '4bf58dd8d48988d1c5941735', // Sandwich (Wooly Pig)
-    '4bf58dd8d48988d143941735', // Breakfast (Crepevine)
-    '4bf58dd8d48988d16c941735', // Burger (Burgermeister)
-    '4bf58dd8d48988d1c0941735', // Mediterranean (Taboun)
-    '4bf58dd8d48988d1ca941735', // Pizza (KP, Front Room)
-    '4bf58dd8d48988d10f941735', // Indian
-    '4bf58dd8d48988d1c1941735' // Mexican
-  ].join(','),
+  fsq_category_ids: '4d4b7105d754a06374d81259', // Restaurant
   limit: 50,
   radius: 625
 }
 
 const coffeeSearchObj = {
   ll: '37.7634643,-122.4591061',
-  categories: [
-    '4bf58dd8d48988d1e0931735', // Coffee Shop
-    '5665c7b9498e7d8a4f2c0f06' // Corporate Coffee Shop
-  ].join(','),
+  fsq_category_ids: '63be6904847c3692a84b9bb6', // Cafe/Coffee/Tea House
   limit: 50,
   radius: 300
 }
@@ -46,15 +33,17 @@ module.exports = async (searchType) => {
   try {
     const params = new URLSearchParams({
       ll: searchObj.ll,
-      categories: searchObj.categories,
+      fsq_category_ids: searchObj.fsq_category_ids,
       limit: searchObj.limit,
       radius: searchObj.radius
     })
-    const url = `https://api.foursquare.com/v3/places/search?${params.toString()}`
+    const url = `https://places-api.foursquare.com/places/search?${params.toString()}`
     const response = await fetch(url, {
       headers: {
-        Authorization: process.env.FOURSQUARE_API_KEY,
-        Accept: 'application/json'
+        Authorization: `Bearer ${process.env.FOURSQUARE_API_KEY}`,
+        Accept: 'application/json',
+        'X-Places-Api-Version': '2025-06-17',
+        'X-Users-Api-Version': '2025-06-17'
       }
     })
     if (!response.ok) throw new Error('Foursquare API error')
@@ -68,7 +57,7 @@ module.exports = async (searchType) => {
     }
 
     message = rec.name + ' (' + (rec.location.address || 'No address') + ')\n'
-    message += fsqUrl + rec.fsq_id
+    message += fsqUrl + rec.fsq_place_id
     message += `\n\n${messageTag}`
   } catch (error) {
     console.error(error)
